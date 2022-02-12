@@ -25,4 +25,11 @@
         android:layout_height="wrap_content"
         android:text="@string/button_pick_photo"
         android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_post_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_post_notification"
+        android:layout_marginTop="16dp" />
 </LinearLayout>
