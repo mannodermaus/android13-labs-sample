@@ -2,10 +2,17 @@ package de.mannodermaus.android13labs
 
 import android.annotation.SuppressLint
 import android.app.LocaleManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.LocaleList
+import android.provider.MediaStore
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.GetContent
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.getSystemService
+import androidx.core.os.BuildCompat
 import androidx.core.view.WindowCompat
 import com.google.android.material.radiobutton.MaterialRadioButton
 import de.mannodermaus.android13labs.databinding.ActivityMainBinding
@@ -29,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         setupLanguagePicker()
+
+        setupPhotoPicker()
     }
 
     // Only works on API 33+; AndroidX version is supposedly on its way
@@ -57,5 +66,16 @@ class MainActivity : AppCompatActivity() {
                 localeManager.applicationLocales = LocaleList(supportedLocales[i])
             }
         }
+    }
+
+    private fun setupPhotoPicker() {
+        binding.content.buttonPickPhoto.setOnClickListener {
+            pickPhotoContract.launch("images/*")
+        }
+    }
+
+    // Using https://gist.github.com/ianhanniballake/42d8bbf37e6050dd6869229de6606f11
+    private val pickPhotoContract = registerForActivityResult(PickImage()) { uri ->
+        println("Photo was picked: $uri")
     }
 }
