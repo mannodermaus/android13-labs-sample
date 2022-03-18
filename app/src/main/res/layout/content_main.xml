@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <TextView
@@ -23,15 +22,27 @@
         android:id="@+id/button_pick_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_pick_photo"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="@string/button_pick_photo" />
 
-    <Button
-        android:id="@+id/button_post_notification"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_post_notification"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/button_post_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_post_notification" />
+
+        <Button
+            android:id="@+id/button_revoke_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_revoke_permission" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -5,4 +5,5 @@
     <string name="button_post_notification">Post a notification</string>
     <string name="button_start_service">Start FG service</string>
     <string name="button_stop_service">Stop FG service</string>
+    <string name="button_revoke_permission">Revoke permission</string>
 </resources>

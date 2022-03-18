@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             tryShowNotification()
         }
 
+        binding.content.buttonRevokePermission.setOnClickListener { revokeNotificationPermission() }
+
         // Foreground service management
         binding.content.buttonStartService.setOnClickListener { startFGService() }
         binding.content.buttonStopService.setOnClickListener { stopFGService() }
@@ -134,6 +136,17 @@ class MainActivity : AppCompatActivity() {
             showNotification()
         } else {
             permissionContract.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    private fun revokeNotificationPermission() {
+        if (BuildCompat.isAtLeastT()) {
+            try {
+                println("Revoking notification permission on kill...")
+                revokeOwnPermissionOnKill(Manifest.permission.POST_NOTIFICATIONS)
+            } catch (e: SecurityException) {
+                println("No need to revoke permission, I didn't even have it in the first place")
+            }
         }
     }
 
