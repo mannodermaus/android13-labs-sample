@@ -1,5 +1,6 @@
 package de.mannodermaus.android13labs
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
@@ -31,8 +32,8 @@ import androidx.core.os.BuildCompat
  * }
  * ```
  */
-@BuildCompat.PrereleaseSdkCheck
 class PickImage : ActivityResultContracts.GetContent() {
+    @SuppressLint("UnsafeOptInUsageError")
     override fun createIntent(context: Context, input: String): Intent {
         // Check to see if the ACTION_PICK_IMAGES intent is available
         return if (BuildCompat.isAtLeastT()) {
