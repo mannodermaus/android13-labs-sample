@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Android13ラボ</string>
-    <string name="hello_world">こんにちは世界</string>
-    <string name="button_pick_photo">写真を選択する</string>
-    <string name="button_post_notification">通知を送信する</string>
-    <string name="button_start_service">サービスをSTARTする</string>
-    <string name="button_stop_service">サービスをSTOPする</string>
+    <string name="hello_world">具体的には、注力する事業ドメインを音楽・アニメ・デジタルの3つに再定義するとともに、グループ横断及び有望なスタートアップ企業・プレーヤーとの連携による事業開発、組織のフラット化並びにフレックスタイム制・オフィスのフリーアドレス制の全社導入による働き方改革等に取り組んでまいりました。</string>
+    <string name="checkbox_break_phrases">文節をON</string>
+    <string name="button_pick_photo">写真を選択</string>
+    <string name="button_post_notification">通知を送信</string>
+    <string name="button_start_service">サービスをSTART</string>
+    <string name="button_stop_service">サービスをSTOP</string>
     <string name="button_revoke_permission">許可を取り消す</string>
 </resources>

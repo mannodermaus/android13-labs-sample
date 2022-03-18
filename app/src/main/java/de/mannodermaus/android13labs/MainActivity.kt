@@ -5,6 +5,8 @@ import android.annotation.SuppressLint
 import android.app.LocaleManager
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.text.LineBreakConfig.LINE_BREAK_WORD_STYLE_NONE
+import android.graphics.text.LineBreakConfig.LINE_BREAK_WORD_STYLE_PHRASE
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,7 +19,6 @@ import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startForegroundService
 import androidx.core.content.getSystemService
 import androidx.core.os.BuildCompat
@@ -46,6 +47,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        binding.content.checkboxPhraseWrapping.setOnCheckedChangeListener { _, enabled ->
+            updateLoremIpsumTextWrapping(enabled)
+        }
 
         setupLanguagePicker()
 
@@ -79,6 +84,23 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
 
         unregisterReceiver(broadcastReceiver)
+    }
+
+    private fun updateLoremIpsumTextWrapping(enabled: Boolean) {
+        if (BuildCompat.isAtLeastT()) {
+            // Grab current line break config and update the word style
+            val newConfig = binding.content.textLoremIpsum.lineBreakConfig.apply {
+                lineBreakWordStyle = if (enabled) {
+                    LINE_BREAK_WORD_STYLE_PHRASE
+                } else {
+                    LINE_BREAK_WORD_STYLE_NONE
+                }
+            }
+
+            // The setter must be called in order for
+            // the changes to take effect (think 'LayoutParams')
+            binding.content.textLoremIpsum.lineBreakConfig = newConfig
+        }
     }
 
     // Only works on API 33+; AndroidX version is supposedly on its way

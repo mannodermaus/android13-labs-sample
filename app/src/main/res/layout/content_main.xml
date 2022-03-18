@@ -7,10 +7,17 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/text_lorem_ipsum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
         android:text="@string/hello_world" />
+
+    <CheckBox
+        android:id="@+id/checkbox_phrase_wrapping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_break_phrases"/>
 
     <RadioGroup
         android:id="@+id/radio_group"
