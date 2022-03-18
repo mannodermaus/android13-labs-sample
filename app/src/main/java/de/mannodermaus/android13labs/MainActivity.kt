@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.LocaleManager
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -16,8 +17,10 @@ import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startForegroundService
 import androidx.core.content.getSystemService
+import androidx.core.os.BuildCompat
 import androidx.core.view.WindowCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.radiobutton.MaterialRadioButton
@@ -31,7 +34,7 @@ private val supportedLocales = listOf(
 
 private const val notificationChannel = "example"
 
-@SuppressLint("ObsoleteSdkInt")
+@SuppressLint("UnsafeOptInUsageError", "ObsoleteSdkInt")
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -55,6 +58,25 @@ class MainActivity : AppCompatActivity() {
         // Foreground service management
         binding.content.buttonStartService.setOnClickListener { startFGService() }
         binding.content.buttonStopService.setOnClickListener { stopFGService() }
+    }
+
+    private val broadcastReceiver = AmazingBroadcastReceiver()
+    private val broadcastIntentFilter = IntentFilter(Intent.ACTION_TIME_TICK)
+
+    override fun onResume() {
+        super.onResume()
+
+        if (BuildCompat.isAtLeastT()) {
+            registerReceiver(broadcastReceiver, broadcastIntentFilter, RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(broadcastReceiver, broadcastIntentFilter)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        unregisterReceiver(broadcastReceiver)
     }
 
     // Only works on API 33+; AndroidX version is supposedly on its way
