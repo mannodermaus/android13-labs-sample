@@ -32,4 +32,25 @@
         android:layout_height="wrap_content"
         android:text="@string/button_post_notification"
         android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/button_start_service"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_start_service" />
+
+        <Button
+            android:id="@+id/button_stop_service"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_stop_service" />
+    </LinearLayout>
 </LinearLayout>

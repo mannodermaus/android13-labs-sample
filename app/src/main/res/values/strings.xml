@@ -3,4 +3,6 @@
     <string name="hello_world">Hello World</string>
     <string name="button_pick_photo">Pick a photo</string>
     <string name="button_post_notification">Post a notification</string>
+    <string name="button_start_service">Start FG service</string>
+    <string name="button_stop_service">Stop FG service</string>
 </resources>

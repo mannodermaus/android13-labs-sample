@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         binding.content.buttonPostNotification.setOnClickListener {
             tryShowNotification()
         }
+
+        // Foreground service management
+        binding.content.buttonStartService.setOnClickListener { startFGService() }
+        binding.content.buttonStopService.setOnClickListener { stopFGService() }
     }
 
     // Only works on API 33+; AndroidX version is supposedly on its way
@@ -171,5 +175,13 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(this)
         }
+    }
+
+    private fun startFGService() {
+        startForegroundService(applicationContext, Intent(this, AmazingService::class.java))
+    }
+
+    private fun stopFGService() {
+        stopService(Intent(this, AmazingService::class.java))
     }
 }

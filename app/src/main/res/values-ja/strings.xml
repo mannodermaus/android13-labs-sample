@@ -3,4 +3,6 @@
     <string name="hello_world">こんにちは世界</string>
     <string name="button_pick_photo">写真を選択する</string>
     <string name="button_post_notification">通知を送信する</string>
+    <string name="button_start_service">サービスをSTARTする</string>
+    <string name="button_stop_service">サービスをSTOPする</string>
 </resources>
