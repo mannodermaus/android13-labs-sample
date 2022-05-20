@@ -89,17 +89,11 @@ class MainActivity : AppCompatActivity() {
     private fun updateLoremIpsumTextWrapping(enabled: Boolean) {
         if (BuildCompat.isAtLeastT()) {
             // Grab current line break config and update the word style
-            val newConfig = binding.content.textLoremIpsum.lineBreakConfig.apply {
-                lineBreakWordStyle = if (enabled) {
-                    LINE_BREAK_WORD_STYLE_PHRASE
-                } else {
-                    LINE_BREAK_WORD_STYLE_NONE
-                }
+            binding.content.textLoremIpsum.lineBreakWordStyle = if (enabled) {
+                LINE_BREAK_WORD_STYLE_PHRASE
+            } else {
+                LINE_BREAK_WORD_STYLE_NONE
             }
-
-            // The setter must be called in order for
-            // the changes to take effect (think 'LayoutParams')
-            binding.content.textLoremIpsum.lineBreakConfig = newConfig
         }
     }
 
@@ -137,7 +131,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Using https://gist.github.com/ianhanniballake/42d8bbf37e6050dd6869229de6606f11
     private val pickPhotoContract = registerForActivityResult(PickImage()) { uri ->
         println("Photo was picked: $uri")
     }
@@ -165,7 +158,7 @@ class MainActivity : AppCompatActivity() {
         if (BuildCompat.isAtLeastT()) {
             try {
                 println("Revoking notification permission on kill...")
-                revokeOwnPermissionOnKill(Manifest.permission.POST_NOTIFICATIONS)
+                revokeSelfPermissionOnKill(Manifest.permission.POST_NOTIFICATIONS)
             } catch (e: SecurityException) {
                 println("No need to revoke permission, I didn't even have it in the first place")
             }

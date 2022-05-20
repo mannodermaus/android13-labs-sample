@@ -37,11 +37,7 @@ class PickImage : ActivityResultContracts.GetContent() {
     override fun createIntent(context: Context, input: String): Intent {
         // Check to see if the ACTION_PICK_IMAGES intent is available
         return if (BuildCompat.isAtLeastT()) {
-            Intent(MediaStore.ACTION_PICK_IMAGES).apply {
-                if (input != "*/*") {
-                    type = input
-                }
-            }
+            Intent(MediaStore.ACTION_PICK_IMAGES)
         } else {
             // For backward compatibility with previous API levels
             super.createIntent(context, input).apply {
