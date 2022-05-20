@@ -71,4 +71,10 @@
             android:layout_weight="1"
             android:text="@string/button_stop_service" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_start_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Back Gesture Test"/>
 </LinearLayout>

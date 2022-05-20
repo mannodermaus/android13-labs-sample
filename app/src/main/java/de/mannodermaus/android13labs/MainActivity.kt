@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        binding.content.buttonStartActivity.setOnClickListener {
+            startActivity(Intent(this, AnotherActivity::class.java))
+        }
+
         binding.content.checkboxPhraseWrapping.setOnCheckedChangeListener { _, enabled ->
             updateLoremIpsumTextWrapping(enabled)
         }
