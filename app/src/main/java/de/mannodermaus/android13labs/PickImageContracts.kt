@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.BuildCompat
 
@@ -78,7 +79,7 @@ class PickMultipleImages(
     } else {
         Integer.MAX_VALUE
     }
-): ActivityResultContracts.GetMultipleContents() {
+) : ActivityResultContracts.GetMultipleContents() {
     override fun createIntent(context: Context, input: String): Intent {
         // Check to see if the ACTION_PICK_IMAGES intent is available
         if (BuildCompat.isAtLeastT()) {

@@ -1,7 +1,6 @@
 package de.mannodermaus.android13labs
 
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
